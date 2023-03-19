@@ -1,0 +1,28 @@
+.fleet
+.idea
+.vscode
+
+# laravel git ignores
+panel/.phpunit.cache
+panel/node_modules
+panel/public/build
+panel/public/hot
+panel/public/storage
+panel/storage/*.key
+panel/vendor
+panel/.env
+panel/.env.backup
+panel/.env.production
+panel/.phpunit.result.cache
+panel/Homestead.json
+panel/Homestead.yaml
+panel/auth.json
+panel/npm-debug.log
+panel/yarn-error.log
+
+# python git ignores
+vision/.venv
+
+# shared storage directory
+storage/*
+!storage/.gitkeep
