@@ -28,4 +28,17 @@ class Character extends Model
     {
         return $this->belongsTo(Face::class, 'face_id');
     }
+
+    public function faces()
+    {
+        return $this->hasMany(Face::class);
+    }
+
+    public function photos()
+    {
+        return $this->belongsToMany(Photo::class, (new Face())->getTable())
+            ->withPivot('image', 'coordinate', 'encoding')
+            ->withTimestamps();
+    }
+
 }

@@ -23,4 +23,15 @@ class Photo extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function faces()
+    {
+        return $this->hasMany(Face::class);
+    }
+
+    public function characters()
+    {
+        return $this->belongsToMany(Character::class, (new Face())->getTable())
+            ->withPivot('image', 'coordinate', 'encoding')
+            ->withTimestamps();
+    }
 }

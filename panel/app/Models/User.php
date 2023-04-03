@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
+    public function faces()
+    {
+        return $this->throughPhotos()->hasFaces();
+    }
+
+    public function characters()
+    {
+        return Character::whereHas('photos', fn ($query) => $query->whereUserId($this->id))->get();
+    }
 }
