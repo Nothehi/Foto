@@ -18,56 +18,38 @@ $ cd vision && \
   .venv/bin/python -m pip install -r requirements.txt
 ```
 
-## ER Diagram
-```mermaid
-    erDiagram
-        users ||--o{ images : "Has Many"
-        images }o--o{ persons : "Many to Many"
-        persons ||--|{ faces : "Has Many"
-        faces ||--|| persons : "Has One"
-```
-
 ## Database Diagram
 ```mermaid
-    erDiagram
-        users ||--o{ images : "Has Many"
-        images }o--o{ persons : "Many to Many"
-        persons ||--|{ faces : "Has Many"
-        faces ||--|| persons : "Has One"
+erDiagram
+    users ||--o{ photos : "Has Many"
+    photos ||--o{ faces : "Has Many"
+    characters |o--|{ faces : "Has Many"
 
-        images {
-            int id PK
-            string name
-            string path
-            timestamp created_at
-            timestamp updated_at
-        }
+    photos {
+        int id PK
+        int user_id FK
+        string name
+        string path
+        timestamp created_at
+        timestamp updated_at
+    }
 
-        image_person {
-            int image_id FK
-            int person_id FK
-            json coordinates
-            timestamp created_at
-            timestamp updated_at
-        }
+    characters {
+        int id PK
+        uuid key
+        string name
+        timestamp created_at
+        timestamp updated_at
+    }
 
-        persons {
-            int id PK
-            int face_id Fk "avatar"
-            string name
-            timestamp created_at
-            timestamp updated_at
-        }
-
-        images }o--o| image_person  : "Many"
-        image_person |o--o{ persons : "Many"
-
-        faces {
-            int id PK
-            int person_id FK
-            string image
-            json encodings
-            timestamp created_at
-            timestamp updated_at
-        }
+    faces {
+        int id PK
+        int photo_id FK
+        int character_id FK "nullable"
+        string image
+        json encodings
+        json coordinates
+        timestamp created_at
+        timestamp updated_at
+    }
 ```
