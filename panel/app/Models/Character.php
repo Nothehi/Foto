@@ -41,4 +41,14 @@ class Character extends Model
             ->withTimestamps();
     }
 
+    public function isMe($face): bool
+    {
+        foreach ($this->faces as $myFace) {
+            if ($myFace->compare($face)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

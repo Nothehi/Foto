@@ -33,4 +33,12 @@ class Face extends Model
         return $this->belongsTo(Character::class);
     }
 
+    public function compare(string $face): bool
+    {
+        $similarity = Process::path(base_path('../vision'))
+            ->run(['./main.py', 'compare', "../storage/{$face}", "../storage/{$this->image}"])
+            ->output();
+
+        return trim($similarity) == 'True';
+    }
 }
