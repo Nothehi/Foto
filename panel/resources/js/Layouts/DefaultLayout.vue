@@ -5,8 +5,15 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { IconChevronRight, IconGripVertical, IconPlus, IconPhoto, IconTrash, IconPoint, IconAlbum, IconTags, IconMasksTheater } from '@tabler/icons-vue';
+
+function upload(e) {
+    router.post(route('photos.store'), { photo: e.target.files[0] }, {
+        preserveScroll: true,
+        onSuccess: (response) => console.log(response),
+    });
+}
 </script>
 
 <template>
@@ -29,9 +36,9 @@ import { IconChevronRight, IconGripVertical, IconPlus, IconPhoto, IconTrash, Ico
                                 <template #trigger>
                                     <span class="inline-flex">
                                         <button type="button"
-                                            class="inline-flex items-center p-1 border border-transparent text-sm leading-4 font-medium rounded-full text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 dark:bg-dark-200">
+                                            class="inline-flex items-center p-0.5 border border-transparent text-sm leading-4 font-medium rounded-full text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 dark:bg-dark-200">
                                             <img :src="`https://api.dicebear.com/5.x/initials/svg?seed=${$page.props.auth.user.name}`"
-                                                :alt="`${$page.props.auth.user.name}`" width="40" height="40"
+                                                :alt="`${$page.props.auth.user.name}`" width="35" height="35"
                                                 class="rounded-full">
                                         </button>
                                     </span>
@@ -153,7 +160,8 @@ import { IconChevronRight, IconGripVertical, IconPlus, IconPhoto, IconTrash, Ico
                                     <label for="file-upload"
                                         class="relative cursor-pointer bg-white dark:bg-dark-400 rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                         <span>Upload a file</span>
-                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                        <input @change="upload" id="file-upload" name="file-upload" type="file"
+                                            class="sr-only">
                                     </label>
                                     <p class="pl-1">or drag and drop</p>
                                 </div>
