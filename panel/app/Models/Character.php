@@ -10,6 +10,7 @@ class Character extends Model
     use HasFactory;
 
     protected $fillable = [
+        'face_id',
         'key',
         'name',
     ];
@@ -23,4 +24,8 @@ class Character extends Model
         static::creating(fn ($character) => $character->key = str()->uuid());
     }
 
+    public function avatar()
+    {
+        return $this->belongsTo(Face::class, 'face_id');
+    }
 }

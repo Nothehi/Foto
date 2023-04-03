@@ -18,6 +18,7 @@ class CharacterFactory extends Factory
     public function definition(): array
     {
         return [
+            'face_id' => Face::factory(),
             'key' => str()->uuid(),
             'name' => fake()->name(),
         ];
