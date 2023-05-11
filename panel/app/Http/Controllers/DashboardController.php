@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $photos = auth()->user()->photos()->with('faces');
+        $photos = auth()->user()->photos()->with('faces.character');
         $character = null;
 
         if ($request->has('character')) {

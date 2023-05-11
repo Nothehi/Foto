@@ -13,7 +13,6 @@ const coordinates = ref([])
 const visibleImage = ref(null)
 
 onMounted(() => {
-    console.log(props.photo.faces);
     setTimeout(() => {
         props.photo.faces.forEach(face => {
             coordinates.value.push([
@@ -48,7 +47,7 @@ function isVisible(idx) {
         <map :name="photo.id">
             <template v-for="(coords, idx) in coordinates" :key="idx">
                 <area @mouseover="showFace(idx)" @mouseout="visibleImage = null" shape="rect" :coords="coords"
-                    :href="`?character=${photo.faces[idx].key}`">
+                    :href="`?character=${photo.faces[idx].character.key}`">
             </template>
         </map>
         <template v-for="(face, idx) in photo.faces" :key="idx">
