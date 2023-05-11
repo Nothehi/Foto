@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
         if ($request->has('character')) {
             $photos = $photos->whereHas('characters', fn ($query) => $query->where('key', $request->character));
-            $character = Character::where('key', $request->character)->first();
+            $character = Character::with('faces')->where('key', $request->character)->first();
         }
 
         return inertia('Dashboard/Index')
