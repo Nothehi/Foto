@@ -34,4 +34,10 @@ class Photo extends Model
             ->withPivot('image', 'coordinate', 'encoding')
             ->withTimestamps();
     }
+
+    public function albums()
+    {
+        return $this->belongsToMany(Album::class)
+            ->withTimestamps();
+    }
 }
