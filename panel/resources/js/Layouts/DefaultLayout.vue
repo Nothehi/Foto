@@ -58,25 +58,25 @@ function upload(e) {
 
             <!-- Page Content -->
             <main class="flex flex-row">
-                <aside class="w-full h-screen sticky top-0 md:w-1/5 bg-white dark:bg-dark-500">
+                <aside class="w-full h-screen sticky top-0 md:w-1/6 bg-white dark:bg-dark-500">
                     <section class="flex flex-col py-4 px-8 border-b border-dark-200">
                         <div class="flex flex-row items-center px-4 py-2">
                             <IconPhoto class="dark:text-white" size="20" />
-                            <h3 class="font-bold dark:text-white ml-4">All photos</h3>
+                            <h3 class="font-medium dark:text-white ml-4">All photos</h3>
                         </div>
 
                         <ul class="space-y-1">
                             <li class="hover:bg-dark-200 rounded-lg">
                                 <button class="flex flex-row items-center w-full px-4 py-2">
                                     <IconPoint class="text-gray-400" size="20" />
-                                    <p class="text-gray-400 font-medium ml-4">Recent</p>
+                                    <p class="text-gray-400 text-sm ml-4">Recent</p>
                                     <span class="text-gray-300 ml-auto mr-2 font-bold">1</span>
                                 </button>
                             </li>
                             <li class="hover:bg-dark-200 rounded-lg">
                                 <button class="flex flex-row items-center w-full px-4 py-2">
                                     <IconPoint class="text-gray-400" size="20" />
-                                    <p class="text-gray-400 font-medium ml-4">Trash</p>
+                                    <p class="text-gray-400 text-sm ml-4">Trash</p>
                                     <span class="text-gray-300 ml-auto font-bold">
                                         <IconTrash class="dark:text-white" size="20" />
                                     </span>
@@ -88,7 +88,7 @@ function upload(e) {
                     <section class="flex flex-col py-4 px-8 border-b border-dark-200">
                         <div class="flex flex-row items-center px-4 py-2">
                             <IconAlbum class="dark:text-white" size="20" />
-                            <h3 class="font-bold dark:text-white ml-4">Albums</h3>
+                            <h3 class="font-medium dark:text-white ml-4">Albums</h3>
                             <button class="bg-dark-200 rounded-md ml-auto p-0.5">
                                 <IconPlus class="ml-auto dark:text-white" size="18" />
                             </button>
@@ -99,7 +99,7 @@ function upload(e) {
                                 <button class="flex flex-row items-center w-full px-4 py-2">
                                     <img src="https://api.dicebear.com/5.x/identicon/svg?seed=test1" alt="test" width="20"
                                         height="20" class="rounded-lg">
-                                    <p class="text-gray-400 font-medium ml-4">Test 1</p>
+                                    <p class="text-gray-400 text-sm ml-4">Test 1</p>
                                     <span class="text-gray-300 ml-auto mr-2 font-bold">1</span>
                                 </button>
                             </li>
@@ -108,7 +108,7 @@ function upload(e) {
                                 <button class="flex flex-row items-center w-full px-4 py-2 dark:bg-dark-200 rounded-lg">
                                     <img src="https://api.dicebear.com/5.x/identicon/svg?seed=test2" alt="test" width="20"
                                         height="20" class="rounded-lg">
-                                    <p class="dark:text-white font-medium ml-4">Test 2</p>
+                                    <p class="dark:text-white text-sm ml-4">Test 2</p>
                                     <IconChevronRight class="ml-auto dark:text-white" size="20" />
                                 </button>
                             </li>
@@ -116,7 +116,7 @@ function upload(e) {
                                 <button class="flex flex-row items-center w-full px-4 py-2">
                                     <img src="https://api.dicebear.com/5.x/identicon/svg?seed=test3" alt="test" width="20"
                                         height="20" class="rounded-lg">
-                                    <p class="text-gray-400 font-medium ml-4">Test 3</p>
+                                    <p class="text-gray-400 text-sm ml-4">Test 3</p>
                                     <span class="text-gray-300 ml-auto mr-2 font-bold">3</span>
                                 </button>
                             </li>
@@ -130,7 +130,7 @@ function upload(e) {
                                     <span class="bg-rose-900 rounded-lg p-0.5">
                                         <IconTags class="text-rose-300" />
                                     </span>
-                                    <p class="dark:text-white font-medium ml-2">Tags</p>
+                                    <p class="dark:text-white ml-2">Tags</p>
                                     <span class="text-gray-300 ml-auto mr-2 font-bold">5</span>
                                 </button>
                             </li>
@@ -139,7 +139,7 @@ function upload(e) {
                                     <span class="bg-sky-900 rounded-lg p-0.5">
                                         <IconMasksTheater class="text-sky-300" />
                                     </span>
-                                    <p class="dark:text-white font-medium ml-2">Persons</p>
+                                    <p class="dark:text-white ml-2">Persons</p>
                                     <span class="text-gray-300 ml-auto mr-2 font-bold">5</span>
                                 </button>
                             </li>
@@ -171,7 +171,7 @@ function upload(e) {
                     </section>
                 </aside>
 
-                <section class="hidden md:block w-4/5">
+                <section class="hidden md:block w-5/6">
                     <slot />
                 </section>
             </main>
