@@ -11,7 +11,6 @@ import { IconChevronRight, IconGripVertical, IconPlus, IconPhoto, IconTrash, Ico
 function upload(e) {
     router.post(route('photos.store'), { photo: e.target.files[0] }, {
         preserveScroll: true,
-        onSuccess: (response) => console.log(response),
     });
 }
 </script>

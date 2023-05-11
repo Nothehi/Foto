@@ -46,8 +46,10 @@ function isVisible(idx) {
         <img :src="`/storage/${photo.path}`" class="rounded-lg" ref="image" :usemap="`#${photo.id}`">
         <map :name="photo.id">
             <template v-for="(coords, idx) in coordinates" :key="idx">
-                <area @mouseover="showFace(idx)" @mouseout="visibleImage = null" shape="rect" :coords="coords"
-                    :href="`?character=${photo.faces[idx].character.key}`">
+                <template v-if="photo.faces[idx]?.character?.key">
+                    <area @mouseover="showFace(idx)" @mouseout="visibleImage = null" shape="rect" :coords="coords"
+                        :href="`?character=${photo.faces[idx]?.character?.key}`">
+                </template>
             </template>
         </map>
         <template v-for="(face, idx) in photo.faces" :key="idx">
