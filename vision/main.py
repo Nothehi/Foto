@@ -2,6 +2,7 @@
 
 from PIL import Image
 import face_recognition
+from sklearn import svm
 import sys
 import random
 import string
