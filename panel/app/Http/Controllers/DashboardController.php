@@ -18,8 +18,8 @@ class DashboardController extends Controller
         }
 
         return inertia('Dashboard/Index')
-            ->with('photos', $photos->get()->groupBy(fn ($item) => $item->created_at->format('d M')))
-            ->with('characters', auth()->user()->characters())
+            ->with('photos', $photos->latest()->get()->groupBy(fn ($item) => $item->created_at->format('d M')))
+            ->with('characters', auth()->user()->characters()->get())
             ->with('character', $character);
     }
 }

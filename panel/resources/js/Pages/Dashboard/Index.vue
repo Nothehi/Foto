@@ -39,7 +39,7 @@ defineProps({
 
                     <CharacterDetail v-if="character" :character="character" />
 
-                    <template v-for="(item, date) in photos" :key="date">
+                    <div v-for="(item, date) in photos" :key="date" class="mb-10">
                         <h3 class="text-dark-100">{{ date }}</h3>
 
                         <div class="columns-3 mt-4">
@@ -48,7 +48,7 @@ defineProps({
                                 <PhotoCard :photo="photo" />
                             </div>
                         </div>
-                    </template>
+                    </div>
                 </div>
 
                 <Characters :characters="characters" />

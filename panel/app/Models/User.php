@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function characters()
     {
-        return Character::whereHas('photos', fn ($query) => $query->whereUserId($this->id))->get();
+        return Character::whereHas('photos', fn ($query) => $query->whereUserId($this->id));
     }
 
     public function guessFace(string $face): ?Face
