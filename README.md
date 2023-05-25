@@ -3,10 +3,15 @@ Self host google photo like service.
 
 
 ## Setup laravel
+For setup you need to have composer and php, then follow these commands:
 ```bash
 $ cd panel && \
   composer install && \
   php artisan key:generate
+```
+This project use databse as queue for queuing the detection of pictures, you also need run laravel queue like this:
+```bash
+php artisan queue:work --queue=detection --timeout=300
 ```
 
 ## Setup python libraries
@@ -20,8 +25,9 @@ $ cd vision && \
 
 ## Database Diagram
 ```mermaid
-erDiagram
     users ||--o{ photos : "Has Many"
+    albums ||--|{ album_photo : "Many to Many"
+    photos ||--|{ album_photo : "Many to Many"
     photos ||--o{ faces : "Has Many"
     characters |o--|{ faces : "Has Many"
 
@@ -30,6 +36,21 @@ erDiagram
         int user_id FK
         string name
         string path
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    albums {
+        int id PK
+        int user_id FK
+        string name
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    album_photo {
+        int album_id FK
+        int photo_id FK
         timestamp created_at
         timestamp updated_at
     }
