@@ -31,6 +31,7 @@ Route::get('/', function () {
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('characters', CharacterController::class)->only('show', 'update');
+    Route::apiResource('albums', AlbumController::class);
 });
 
 Route::middleware('auth')->group(function () {
