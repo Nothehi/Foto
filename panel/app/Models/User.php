@@ -62,6 +62,15 @@ class User extends Authenticatable
         return Character::whereHas('photos', fn ($query) => $query->whereUserId($this->id));
     }
 
+    public function getRecentPhotos()
+    {
+        return [
+            'month' => $this->photos()->whereDate('created_at', '>', now()->subMonth())->count(),
+            'week' => $this->photos()->whereDate('created_at', '>', now()->subWeek())->count(),
+            'day' => $this->photos()->whereDate('created_at', '>', now()->subDay())->count(),
+        ];
+    }
+
     public function guessFace(string $face): ?Face
     {
         foreach ($this->faces as $knowingFace) {
