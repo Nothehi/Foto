@@ -55,7 +55,7 @@ function changeName() {
         </div>
         <Modal :show="showChangeAvatarModal" @close="closeModal">
             <div class="p-6">
-                <h2 class="text-lg font-medium text-gray-900">
+                <h2 class="text-lg font-medium text-white">
                     Choose your favorite face image
                 </h2>
 
