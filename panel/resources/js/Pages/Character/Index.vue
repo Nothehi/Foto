@@ -1,8 +1,10 @@
 <script setup>
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
-import Characters from './Components/Characters.vue'
-import PhotoCard from './Components/PhotoCard.vue'
+import { IconChevronLeft } from '@tabler/icons-vue'
+import Characters from './../Dashboard/Components/Characters.vue'
+import Detail from './Components/Detail.vue'
+import PhotoCard from './../Dashboard/Components/PhotoCard.vue'
 
 defineProps({
     photos: {
@@ -12,6 +14,11 @@ defineProps({
     characters: {
         type: Object,
         required: true
+    },
+    character: {
+        type: Object,
+        required: false,
+        default: null
     }
 })
 </script>
@@ -23,6 +30,15 @@ defineProps({
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-row">
                 <div class="w-4/5 flex flex-col pr-10">
+                    <div>
+                        <Link :href="route('dashboard')"
+                            class="inline-block mb-1 p-1 rounded-lg bg-dark-400 hover:bg-dark-300">
+                        <IconChevronLeft class="text-dark-100" />
+                        </Link>
+                    </div>
+
+                    <Detail :character="character" />
+
                     <div v-for="(item, date) in photos" :key="date" class="mb-10">
                         <h3 class="text-dark-100">{{ date }}</h3>
 

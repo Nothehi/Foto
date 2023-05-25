@@ -15,7 +15,7 @@ defineProps({
 
         <ul class=" space-y-2">
             <li v-for="(character, idx) in characters" :key="idx">
-                <Link :href="`?character=${character.key}`"
+                <Link :href="route('characters.show', character.id)"
                     class="flex flex-row items-center hover:bg-dark-200 py-1 px-2 rounded-lg">
                 <img :src="`/storage/${character.avatar.image}`" alt="test" width="35" height="35" class="rounded-lg">
                 <p class="text-gray-400 font-medium ml-4">{{ character.name }}</p>
