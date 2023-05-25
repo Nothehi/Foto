@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\AlbumPhotoController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PhotoController;
@@ -30,8 +32,10 @@ Route::get('/', function () {
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('photos', PhotoController::class)->only('show', 'store', 'destroy');
     Route::resource('characters', CharacterController::class)->only('show', 'update');
     Route::apiResource('albums', AlbumController::class);
+    Route::resource('albums.photos', AlbumPhotoController::class)->only('store', 'destroy');
 });
 
 Route::middleware('auth')->group(function () {
