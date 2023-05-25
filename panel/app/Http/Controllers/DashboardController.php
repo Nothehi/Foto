@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Character;
-use Illuminate\Http\Request;
-
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $photos = auth()->user()->photos()->with('faces.character');
-        $character = null;
-
-        if ($request->has('character')) {
-            $photos = $photos->whereHas('characters', fn ($query) => $query->where('key', $request->character));
-            $character = Character::with('faces')->where('key', $request->character)->first();
-        }
+        $photos = auth()->user()->photos()
+            ->with('faces.character')
+            ->latest()
+            ->get()
+            ->groupBy(fn ($item) => $item->created_at->format('d M'));
 
         return inertia('Dashboard/Index')
-            ->with('photos', $photos->latest()->get()->groupBy(fn ($item) => $item->created_at->format('d M')))
-            ->with('characters', auth()->user()->characters()->get())
-            ->with('character', $character);
+            ->with('photos', $photos)
+            ->with('characters', auth()->user()->characters()->get());
     }
 }
