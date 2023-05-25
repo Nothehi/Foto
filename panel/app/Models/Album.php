@@ -14,6 +14,10 @@ class Album extends Model
         'name',
     ];
 
+    protected $withCount = [
+        'photos',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
