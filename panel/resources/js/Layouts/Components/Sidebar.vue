@@ -37,25 +37,27 @@ function upload(e) {
 
             <ul class="space-y-1">
                 <li class="hover:bg-dark-200 rounded-lg">
-                    <button class="flex flex-row items-center w-full px-4 py-2">
-                        <IconPoint class="text-gray-400" size="20" />
-                        <p class="text-gray-400 text-sm ml-4">Month</p>
-                        <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.month }}</span>
-                    </button>
+                    <Link :href="route('dashboard', { recent: 'month' })"
+                        class="flex flex-row items-center w-full px-4 py-2">
+                    <IconPoint class="text-gray-400" size="20" />
+                    <p class="text-gray-400 text-sm ml-4">Month</p>
+                    <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.month }}</span>
+                    </Link>
                 </li>
                 <li class="hover:bg-dark-200 rounded-lg">
-                    <button class="flex flex-row items-center w-full px-4 py-2">
-                        <IconPoint class="text-gray-400" size="20" />
-                        <p class="text-gray-400 text-sm ml-4">Week</p>
-                        <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.week }}</span>
-                    </button>
+                    <Link :href="route('dashboard', { recent: 'week' })"
+                        class="flex flex-row items-center w-full px-4 py-2">
+                    <IconPoint class="text-gray-400" size="20" />
+                    <p class="text-gray-400 text-sm ml-4">Week</p>
+                    <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.week }}</span>
+                    </Link>
                 </li>
                 <li class="hover:bg-dark-200 rounded-lg">
-                    <button class="flex flex-row items-center w-full px-4 py-2">
-                        <IconPoint class="text-gray-400" size="20" />
-                        <p class="text-gray-400 text-sm ml-4">Day</p>
-                        <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.day }}</span>
-                    </button>
+                    <Link :href="route('dashboard', { recent: 'day' })" class="flex flex-row items-center w-full px-4 py-2">
+                    <IconPoint class="text-gray-400" size="20" />
+                    <p class="text-gray-400 text-sm ml-4">Day</p>
+                    <span class="text-gray-300 ml-auto mr-2 font-bold">{{ recents.day }}</span>
+                    </Link>
                 </li>
                 <!-- <li class="hover:bg-dark-200 rounded-lg">
                     <button class="flex flex-row items-center w-full px-4 py-2">
