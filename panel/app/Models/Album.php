@@ -28,4 +28,11 @@ class Album extends Model
         return $this->belongsToMany(Photo::class)
             ->withTimestamps();
     }
+
+    public function characters()
+    {
+        return Character::whereHas('photos', function ($query) {
+            $query->whereHas('albums', fn ($subQuery) => $subQuery->whereId($this->id));
+        });
+    }
 }
