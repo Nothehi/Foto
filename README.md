@@ -25,6 +25,7 @@ $ cd vision && \
 
 ## Database Diagram
 ```mermaid
+erDiagram
     users ||--o{ photos : "Has Many"
     albums ||--|{ album_photo : "Many to Many"
     photos ||--|{ album_photo : "Many to Many"
